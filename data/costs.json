@@ -1,0 +1,11 @@
+{
+  "search_assets":{"cost":1,"minutes":15},
+  "generate_script":{
+    "standard":{"cost":2,"minutes":50},
+    "compact":{"cost":1,"minutes":30},
+    "failure_minutes":10
+  },
+  "estimate_plan":{"cost":0,"minutes":5},
+  "save_plan":{"cost":0,"minutes":5},
+  "note":"所有单位、耗时、素材和故障均为合成数据；失败的脚本生成不计费，但耗时 10 分钟。"
+}

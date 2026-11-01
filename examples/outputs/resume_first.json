@@ -1,0 +1,210 @@
+{
+  "topic": "夏日新品",
+  "budget": 15,
+  "start_at": "2026-11-02T09:00:00+08:00",
+  "deadline": "2026-11-02T13:00:00+08:00",
+  "completion_status": "incomplete",
+  "incomplete_reason": "step_limit",
+  "gaps": {},
+  "save_status": "not_attempted",
+  "plan": null,
+  "task_plan": [
+    {
+      "step": "search_assets",
+      "status": "completed"
+    },
+    {
+      "step": "generate_script",
+      "status": "failed"
+    },
+    {
+      "step": "estimate_plan",
+      "status": "pending"
+    },
+    {
+      "step": "save_plan",
+      "status": "pending"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "attempt": 1,
+      "action": "search_assets",
+      "arguments": {
+        "query": "夏日新品"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "query": "夏日新品",
+        "assets": [
+          {
+            "asset_id": "A-PRO",
+            "title": "夏日新品主视觉短片",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 9,
+            "production_minutes": 40,
+            "quality": "premium"
+          },
+          {
+            "asset_id": "A-LEAN",
+            "title": "夏日新品轻量海报",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 5,
+            "production_minutes": 25,
+            "quality": "lean"
+          }
+        ],
+        "partial": false,
+        "warnings": [],
+        "error": null,
+        "charged_cost": 1,
+        "duration_minutes": 15
+      }
+    },
+    {
+      "step": 2,
+      "attempt": 1,
+      "action": "generate_script",
+      "arguments": {
+        "template": "standard"
+      },
+      "status": "failed",
+      "tool_result": {
+        "ok": false,
+        "template": "standard",
+        "error": "script_service_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 10
+      }
+    }
+  ],
+  "tool_results": {
+    "search_assets": {
+      "ok": true,
+      "query": "夏日新品",
+      "assets": [
+        {
+          "asset_id": "A-PRO",
+          "title": "夏日新品主视觉短片",
+          "tags": [
+            "夏日新品",
+            "夏日活动"
+          ],
+          "license_cost": 9,
+          "production_minutes": 40,
+          "quality": "premium"
+        },
+        {
+          "asset_id": "A-LEAN",
+          "title": "夏日新品轻量海报",
+          "tags": [
+            "夏日新品",
+            "夏日活动"
+          ],
+          "license_cost": 5,
+          "production_minutes": 25,
+          "quality": "lean"
+        }
+      ],
+      "partial": false,
+      "warnings": [],
+      "error": null,
+      "charged_cost": 1,
+      "duration_minutes": 15
+    },
+    "generate_script": {
+      "standard": {
+        "ok": false,
+        "template": "standard",
+        "error": "script_service_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 10
+      }
+    },
+    "estimate_plan": {},
+    "save_plan": null
+  },
+  "cost_summary": {
+    "spent_cost": 1,
+    "total_cost": 1,
+    "minimum_estimated_total": null,
+    "remaining_budget": 14
+  },
+  "elapsed_minutes": 25,
+  "available_minutes": 240,
+  "attempt": 1,
+  "mode": "mock_policy",
+  "published": false,
+  "trace": [
+    {
+      "step": 1,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "search_assets",
+      "arguments": {
+        "query": "夏日新品"
+      },
+      "observation": {
+        "ok": true,
+        "query": "夏日新品",
+        "assets": [
+          {
+            "asset_id": "A-PRO",
+            "title": "夏日新品主视觉短片",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 9,
+            "production_minutes": 40,
+            "quality": "premium"
+          },
+          {
+            "asset_id": "A-LEAN",
+            "title": "夏日新品轻量海报",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 5,
+            "production_minutes": 25,
+            "quality": "lean"
+          }
+        ],
+        "partial": false,
+        "warnings": [],
+        "error": null,
+        "charged_cost": 1,
+        "duration_minutes": 15
+      },
+      "decision_basis": "先检索与主题匹配的合成素材",
+      "next_action": "generate_script"
+    },
+    {
+      "step": 2,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "generate_script",
+      "arguments": {
+        "template": "standard"
+      },
+      "observation": {
+        "ok": false,
+        "template": "standard",
+        "error": "script_service_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 10
+      },
+      "decision_basis": "先尝试标准脚本",
+      "next_action": null
+    }
+  ]
+}

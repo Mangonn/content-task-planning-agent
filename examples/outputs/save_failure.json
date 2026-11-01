@@ -1,0 +1,326 @@
+{
+  "topic": "夏日新品",
+  "budget": 15,
+  "start_at": "2026-11-02T09:00:00+08:00",
+  "deadline": "2026-11-02T13:00:00+08:00",
+  "completion_status": "incomplete",
+  "incomplete_reason": "save_failed:plan_store_timeout",
+  "gaps": {},
+  "save_status": "failed",
+  "plan": null,
+  "task_plan": [
+    {
+      "step": "search_assets",
+      "status": "completed"
+    },
+    {
+      "step": "generate_script",
+      "status": "completed"
+    },
+    {
+      "step": "estimate_plan",
+      "status": "completed"
+    },
+    {
+      "step": "save_plan",
+      "status": "failed"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "attempt": 1,
+      "action": "search_assets",
+      "arguments": {
+        "query": "夏日新品"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "query": "夏日新品",
+        "assets": [
+          {
+            "asset_id": "A-PRO",
+            "title": "夏日新品主视觉短片",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 9,
+            "production_minutes": 40,
+            "quality": "premium"
+          },
+          {
+            "asset_id": "A-LEAN",
+            "title": "夏日新品轻量海报",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 5,
+            "production_minutes": 25,
+            "quality": "lean"
+          }
+        ],
+        "partial": false,
+        "warnings": [],
+        "error": null,
+        "charged_cost": 1,
+        "duration_minutes": 15
+      }
+    },
+    {
+      "step": 2,
+      "attempt": 1,
+      "action": "generate_script",
+      "arguments": {
+        "template": "standard"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "template": "standard",
+        "script_id": "S-e80bef45",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "charged_cost": 2,
+        "duration_minutes": 50
+      }
+    },
+    {
+      "step": 3,
+      "attempt": 1,
+      "action": "estimate_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "estimated_total_cost": 12,
+        "projected_total_minutes": 115,
+        "available_minutes": 240,
+        "budget_gap": 0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "charged_cost": 0,
+        "duration_minutes": 5
+      }
+    },
+    {
+      "step": 4,
+      "attempt": 1,
+      "action": "save_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "status": "failed",
+      "tool_result": {
+        "ok": false,
+        "saved": false,
+        "error": "plan_store_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 5,
+        "asset_id": "A-PRO"
+      }
+    }
+  ],
+  "tool_results": {
+    "search_assets": {
+      "ok": true,
+      "query": "夏日新品",
+      "assets": [
+        {
+          "asset_id": "A-PRO",
+          "title": "夏日新品主视觉短片",
+          "tags": [
+            "夏日新品",
+            "夏日活动"
+          ],
+          "license_cost": 9,
+          "production_minutes": 40,
+          "quality": "premium"
+        },
+        {
+          "asset_id": "A-LEAN",
+          "title": "夏日新品轻量海报",
+          "tags": [
+            "夏日新品",
+            "夏日活动"
+          ],
+          "license_cost": 5,
+          "production_minutes": 25,
+          "quality": "lean"
+        }
+      ],
+      "partial": false,
+      "warnings": [],
+      "error": null,
+      "charged_cost": 1,
+      "duration_minutes": 15
+    },
+    "generate_script": {
+      "standard": {
+        "ok": true,
+        "template": "standard",
+        "script_id": "S-e80bef45",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "charged_cost": 2,
+        "duration_minutes": 50
+      }
+    },
+    "estimate_plan": {
+      "A-PRO": {
+        "ok": true,
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "estimated_total_cost": 12,
+        "projected_total_minutes": 115,
+        "available_minutes": 240,
+        "budget_gap": 0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "charged_cost": 0,
+        "duration_minutes": 5
+      }
+    },
+    "save_plan": {
+      "ok": false,
+      "saved": false,
+      "error": "plan_store_timeout",
+      "charged_cost": 0,
+      "duration_minutes": 5,
+      "asset_id": "A-PRO"
+    }
+  },
+  "cost_summary": {
+    "spent_cost": 3,
+    "total_cost": 3,
+    "minimum_estimated_total": 12,
+    "remaining_budget": 12
+  },
+  "elapsed_minutes": 75,
+  "available_minutes": 240,
+  "attempt": 1,
+  "mode": "mock_policy",
+  "published": false,
+  "trace": [
+    {
+      "step": 1,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "search_assets",
+      "arguments": {
+        "query": "夏日新品"
+      },
+      "observation": {
+        "ok": true,
+        "query": "夏日新品",
+        "assets": [
+          {
+            "asset_id": "A-PRO",
+            "title": "夏日新品主视觉短片",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 9,
+            "production_minutes": 40,
+            "quality": "premium"
+          },
+          {
+            "asset_id": "A-LEAN",
+            "title": "夏日新品轻量海报",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 5,
+            "production_minutes": 25,
+            "quality": "lean"
+          }
+        ],
+        "partial": false,
+        "warnings": [],
+        "error": null,
+        "charged_cost": 1,
+        "duration_minutes": 15
+      },
+      "decision_basis": "先检索与主题匹配的合成素材",
+      "next_action": "generate_script"
+    },
+    {
+      "step": 2,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "generate_script",
+      "arguments": {
+        "template": "standard"
+      },
+      "observation": {
+        "ok": true,
+        "template": "standard",
+        "script_id": "S-e80bef45",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "charged_cost": 2,
+        "duration_minutes": 50
+      },
+      "decision_basis": "先尝试标准脚本",
+      "next_action": "estimate_plan"
+    },
+    {
+      "step": 3,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "estimate_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "observation": {
+        "ok": true,
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "estimated_total_cost": 12,
+        "projected_total_minutes": 115,
+        "available_minutes": 240,
+        "budget_gap": 0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "charged_cost": 0,
+        "duration_minutes": 5
+      },
+      "decision_basis": "核算该素材的总成本与截止时间",
+      "next_action": "save_plan"
+    },
+    {
+      "step": 4,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "save_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "observation": {
+        "ok": false,
+        "saved": false,
+        "error": "plan_store_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 5,
+        "asset_id": "A-PRO"
+      },
+      "decision_basis": "该方案满足预算与时间约束，仅保存草稿",
+      "next_action": "finish"
+    },
+    {
+      "step": 5,
+      "attempt": 1,
+      "actor": "mock_policy",
+      "action": "finish",
+      "arguments": {},
+      "observation": "stopped",
+      "decision_basis": "保存工具失败，保持成功步骤并等待续跑",
+      "next_action": null
+    }
+  ]
+}

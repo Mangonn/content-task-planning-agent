@@ -1,0 +1,25 @@
+{
+  "topic": "夏日新品",
+  "budget": 10,
+  "deadline": null,
+  "completion_status": "needs_input",
+  "missing_fields": [
+    "deadline"
+  ],
+  "incomplete_reason": "missing_required_input",
+  "save_status": "not_attempted",
+  "plan": null,
+  "gaps": {},
+  "cost_summary": {
+    "spent_cost": 0,
+    "total_cost": 0,
+    "minimum_estimated_total": null,
+    "remaining_budget": 10
+  },
+  "task_plan": [],
+  "steps": [],
+  "tool_results": {},
+  "trace": [],
+  "published": false,
+  "mode": "preflight"
+}

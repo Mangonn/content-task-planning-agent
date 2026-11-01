@@ -1,0 +1,6 @@
+[
+  {"asset_id":"A-PRO","title":"夏日新品主视觉短片","tags":["夏日新品","夏日活动"],"license_cost":9,"production_minutes":40,"quality":"premium"},
+  {"asset_id":"A-LEAN","title":"夏日新品轻量海报","tags":["夏日新品","夏日活动"],"license_cost":5,"production_minutes":25,"quality":"lean"},
+  {"asset_id":"B-PRO","title":"秋季活动主视觉短片","tags":["秋季活动"],"license_cost":9,"production_minutes":40,"quality":"premium"},
+  {"asset_id":"B-LEAN","title":"秋季活动轻量海报","tags":["秋季活动"],"license_cost":5,"production_minutes":25,"quality":"lean"}
+]

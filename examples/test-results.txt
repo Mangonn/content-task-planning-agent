@@ -1,0 +1,21 @@
+test_budget_overrun_replans_from_12_to_8 (test_agent.PlanningAcceptanceTests.test_budget_overrun_replans_from_12_to_8) ... ok
+test_cli_database_unavailable_is_explicit (test_agent.PlanningAcceptanceTests.test_cli_database_unavailable_is_explicit) ... ok
+test_cli_missing_model_key_points_to_mock (test_agent.PlanningAcceptanceTests.test_cli_missing_model_key_points_to_mock) ... ok
+test_deepseek_adapter_returns_tool_observation (test_agent.PlanningAcceptanceTests.test_deepseek_adapter_returns_tool_observation) ... ok
+test_duplicate_execution_reuses_one_plan_without_extra_cost (test_agent.PlanningAcceptanceTests.test_duplicate_execution_reuses_one_plan_without_extra_cost) ... ok
+test_failed_step_can_resume_without_repeating_successful_search (test_agent.PlanningAcceptanceTests.test_failed_step_can_resume_without_repeating_successful_search) ... ok
+test_missing_budget_or_deadline_needs_input_without_tools (test_agent.PlanningAcceptanceTests.test_missing_budget_or_deadline_needs_input_without_tools) ... ok
+test_model_cannot_save_without_dependencies (test_agent.PlanningAcceptanceTests.test_model_cannot_save_without_dependencies) ... ok
+test_no_budget_feasible_returns_gap_without_save (test_agent.PlanningAcceptanceTests.test_no_budget_feasible_returns_gap_without_save) ... ok
+test_no_deadline_feasible_returns_time_gap (test_agent.PlanningAcceptanceTests.test_no_deadline_feasible_returns_time_gap) ... ok
+test_normal_plan_is_saved_with_exact_cost_and_time (test_agent.PlanningAcceptanceTests.test_normal_plan_is_saved_with_exact_cost_and_time) ... ok
+test_parallel_model_actions_are_rejected (test_agent.PlanningAcceptanceTests.test_parallel_model_actions_are_rejected) ... ok
+test_partial_search_keeps_lean_result (test_agent.PlanningAcceptanceTests.test_partial_search_keeps_lean_result) ... ok
+test_save_failure_is_not_success_and_can_resume (test_agent.PlanningAcceptanceTests.test_save_failure_is_not_success_and_can_resume) ... ok
+test_script_failure_uses_compact_and_keeps_search (test_agent.PlanningAcceptanceTests.test_script_failure_uses_compact_and_keeps_search) ... ok
+test_step_and_tool_limits_are_explicit (test_agent.PlanningAcceptanceTests.test_step_and_tool_limits_are_explicit) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.108s
+
+OK
