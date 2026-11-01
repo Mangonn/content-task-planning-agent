@@ -48,7 +48,7 @@ DeepSeek 通过 Chat Completions 的 function calling 选择**一个**动作；�
 | --- | --- |
 | 输入、实际输出、逐步 Trace | [`examples/`](examples/) |
 | 13 组离线案例重跑 | `python3 examples/run_examples.py` |
-| 16 项自动测试与结果 | [`tests/test_agent.py`](tests/test_agent.py)、[`examples/test-results.txt`](examples/test-results.txt) |
+| 17 项自动测试与结果 | [`tests/test_agent.py`](tests/test_agent.py)、[`examples/test-results.txt`](examples/test-results.txt) |
 | 成本与素材 | [`data/costs.json`](data/costs.json)、[`data/assets.json`](data/assets.json) |
 | 需求、设计、评估、AI 使用、复盘 | [`docs/`](docs/) |
 

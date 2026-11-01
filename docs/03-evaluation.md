@@ -10,7 +10,7 @@ python3 examples/run_examples.py
 python3 examples/run_model_examples.py  # 需 DEEPSEEK_API_KEY 与网络
 ```
 
-结果：16 项测试通过，13 组离线 CLI 输入、实际输出和 Trace 已生成；两组真实 DeepSeek 模型案例完成并保存草稿。测试日志见 [`examples/test-results.txt`](../examples/test-results.txt)。离线结果是流程与业务约束验证；真实模型记录才用于验证模型观察后改选动作，且只代表这两次运行。
+结果：17 项测试通过，13 组离线 CLI 输入、实际输出和 Trace 已生成；两组真实 DeepSeek 模型案例完成并保存草稿。测试日志见 [`examples/test-results.txt`](../examples/test-results.txt)。离线结果是流程与业务约束验证；真实模型记录才用于验证模型观察后改选动作，且只代表这两次运行。
 
 ## 验收点对应证据
 
@@ -34,6 +34,7 @@ python3 examples/run_model_examples.py  # 需 DEEPSEEK_API_KEY 与网络
 - 单元测试直接让假模型越过依赖调用保存，业务工具返回 `feasible_estimate_required`，草稿数为 0。
 - 注入保存超时，第一次明确未完成；续跑从 SQLite 状态恢复。数据库不可用时 CLI 返回 `storage_unavailable`。
 - 同一请求二次执行验证草稿数为 1，费用不重复计入。
+- 模拟草稿先写入、进度状态后写入的中断：再次请求从 `plans` 表恢复 `completed/already_exists`，草稿仍只有一份。
 - `max_steps` 与 `max_tools` 达限时分别返回 `step_limit`、`tool_limit`；不会把未完成写成成功。
 - 没有模型密钥时 `--mode deepseek` 返回 `model_unavailable`，不会用 Mock 冒充真实模型结果。
 

@@ -10,6 +10,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from src.agent import run
+from src.business import RunStore, request_key
 from src.models import DeepSeekModel, MockPolicy
 
 
@@ -105,6 +106,25 @@ class PlanningAcceptanceTests(unittest.TestCase):
         self.assertEqual(again["save_status"], "already_exists")
         self.assertEqual(again["plan"]["plan_id"], first["plan"]["plan_id"])
         self.assertEqual(again["cost_summary"]["total_cost"], 12)
+        self.assertEqual(self.plan_count(), 1)
+
+    def test_saved_plan_recovers_if_progress_snapshot_lags(self):
+        first = self.case("normal")
+        request = self.request("normal")
+        key = request_key(request)
+        store = RunStore(self.db)
+        state = store.load_state(key)
+        state["save"] = None
+        state["spent_cost"] = 3
+        state["elapsed_minutes"] = 70
+        store.persist(key, request, state, "running")
+        store.close()
+        again = self.case("normal")
+        self.assertEqual(again["save_status"], "already_exists")
+        self.assertEqual(again["task_plan"][-1]["status"], "completed")
+        self.assertEqual(again["tool_results"]["save_plan"]["confirmed_by"], "plans_table")
+        self.assertEqual(again["cost_summary"]["spent_cost"], first["plan"]["total_cost"])
+        self.assertEqual(again["elapsed_minutes"], first["plan"]["total_minutes"])
         self.assertEqual(self.plan_count(), 1)
 
     def test_failed_step_can_resume_without_repeating_successful_search(self):

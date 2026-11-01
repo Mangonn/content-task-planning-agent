@@ -115,6 +115,12 @@ def run(request: dict, *, model, db_path: Path, fail_once: set[str] | None = Non
         existing = store.get_plan(key)
         if existing:
             shown = deepcopy(state)
+            if not shown["save"] or not shown["save"].get("saved"):
+                shown["save"] = {"ok": True, "saved": True, "duplicate": True,
+                                 "plan": existing, "confirmed_by": "plans_table",
+                                 "charged_cost": 0, "duration_minutes": 0}
+                shown["spent_cost"] = max(shown["spent_cost"], existing["total_cost"])
+                shown["elapsed_minutes"] = max(shown["elapsed_minutes"], existing["total_minutes"])
             shown["trace"].append({"step": len(shown["trace"]) + 1, "attempt": shown["attempt"],
                                    "actor": "system", "action": "idempotency_lookup",
                                    "arguments": {"request_key": key},

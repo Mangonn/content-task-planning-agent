@@ -12,10 +12,11 @@ test_normal_plan_is_saved_with_exact_cost_and_time (test_agent.PlanningAcceptanc
 test_parallel_model_actions_are_rejected (test_agent.PlanningAcceptanceTests.test_parallel_model_actions_are_rejected) ... ok
 test_partial_search_keeps_lean_result (test_agent.PlanningAcceptanceTests.test_partial_search_keeps_lean_result) ... ok
 test_save_failure_is_not_success_and_can_resume (test_agent.PlanningAcceptanceTests.test_save_failure_is_not_success_and_can_resume) ... ok
+test_saved_plan_recovers_if_progress_snapshot_lags (test_agent.PlanningAcceptanceTests.test_saved_plan_recovers_if_progress_snapshot_lags) ... ok
 test_script_failure_uses_compact_and_keeps_search (test_agent.PlanningAcceptanceTests.test_script_failure_uses_compact_and_keeps_search) ... ok
 test_step_and_tool_limits_are_explicit (test_agent.PlanningAcceptanceTests.test_step_and_tool_limits_are_explicit) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 0.108s
+Ran 17 tests in 0.153s
 
 OK
