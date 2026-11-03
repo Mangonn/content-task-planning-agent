@@ -202,6 +202,7 @@
   },
   "elapsed_minutes": 75,
   "available_minutes": 240,
+  "failed_step_minutes": 5,
   "attempt": 1,
   "mode": "mock_policy",
   "published": false,

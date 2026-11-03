@@ -1,0 +1,424 @@
+{
+  "topic": "夏日新品",
+  "budget": 15,
+  "start_at": "2026-11-02T09:00:00+08:00",
+  "deadline": "2026-11-02T13:00:00+08:00",
+  "completion_status": "complete",
+  "incomplete_reason": null,
+  "gaps": {},
+  "save_status": "saved",
+  "plan": {
+    "plan_id": "f5c9ac3ce180",
+    "topic": "夏日新品",
+    "asset_id": "A-PRO",
+    "script_id": "S-e80bef45",
+    "script_template": "standard",
+    "script": "夏日新品：展示主视觉、卖点与行动号召。",
+    "total_cost": 12,
+    "total_minutes": 120,
+    "budget": 15,
+    "deadline": "2026-11-02T13:00:00+08:00",
+    "status": "saved_draft",
+    "published": false
+  },
+  "task_plan": [
+    {
+      "step": "search_assets",
+      "status": "completed"
+    },
+    {
+      "step": "generate_script",
+      "status": "completed"
+    },
+    {
+      "step": "estimate_plan",
+      "status": "completed"
+    },
+    {
+      "step": "save_plan",
+      "status": "completed"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "attempt": 1,
+      "action": "search_assets",
+      "arguments": {
+        "query": "夏日新品"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "query": "夏日新品",
+        "assets": [
+          {
+            "asset_id": "A-PRO",
+            "title": "夏日新品主视觉短片",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 9,
+            "production_minutes": 40,
+            "quality": "premium"
+          },
+          {
+            "asset_id": "A-LEAN",
+            "title": "夏日新品轻量海报",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 5,
+            "production_minutes": 25,
+            "quality": "lean"
+          }
+        ],
+        "partial": false,
+        "warnings": [],
+        "error": null,
+        "charged_cost": 1,
+        "duration_minutes": 15
+      }
+    },
+    {
+      "step": 2,
+      "attempt": 1,
+      "action": "generate_script",
+      "arguments": {
+        "template": "standard"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "template": "standard",
+        "script_id": "S-e80bef45",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "charged_cost": 2,
+        "duration_minutes": 50
+      }
+    },
+    {
+      "step": 3,
+      "attempt": 1,
+      "action": "estimate_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "estimated_total_cost": 12,
+        "projected_total_minutes": 115,
+        "available_minutes": 240,
+        "budget_gap": 0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "charged_cost": 0,
+        "duration_minutes": 5
+      }
+    },
+    {
+      "step": 4,
+      "attempt": 1,
+      "action": "save_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "status": "failed",
+      "tool_result": {
+        "ok": false,
+        "saved": false,
+        "error": "plan_store_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 5,
+        "asset_id": "A-PRO"
+      }
+    },
+    {
+      "step": 5,
+      "attempt": 1,
+      "action": "save_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "status": "succeeded",
+      "tool_result": {
+        "ok": true,
+        "saved": true,
+        "duplicate": false,
+        "plan": {
+          "plan_id": "f5c9ac3ce180",
+          "topic": "夏日新品",
+          "asset_id": "A-PRO",
+          "script_id": "S-e80bef45",
+          "script_template": "standard",
+          "script": "夏日新品：展示主视觉、卖点与行动号召。",
+          "total_cost": 12,
+          "total_minutes": 120,
+          "budget": 15,
+          "deadline": "2026-11-02T13:00:00+08:00",
+          "status": "saved_draft",
+          "published": false
+        },
+        "charged_cost": 9,
+        "duration_minutes": 45,
+        "asset_id": "A-PRO"
+      }
+    }
+  ],
+  "tool_results": {
+    "search_assets": {
+      "ok": true,
+      "query": "夏日新品",
+      "assets": [
+        {
+          "asset_id": "A-PRO",
+          "title": "夏日新品主视觉短片",
+          "tags": [
+            "夏日新品",
+            "夏日活动"
+          ],
+          "license_cost": 9,
+          "production_minutes": 40,
+          "quality": "premium"
+        },
+        {
+          "asset_id": "A-LEAN",
+          "title": "夏日新品轻量海报",
+          "tags": [
+            "夏日新品",
+            "夏日活动"
+          ],
+          "license_cost": 5,
+          "production_minutes": 25,
+          "quality": "lean"
+        }
+      ],
+      "partial": false,
+      "warnings": [],
+      "error": null,
+      "charged_cost": 1,
+      "duration_minutes": 15
+    },
+    "generate_script": {
+      "standard": {
+        "ok": true,
+        "template": "standard",
+        "script_id": "S-e80bef45",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "charged_cost": 2,
+        "duration_minutes": 50
+      }
+    },
+    "estimate_plan": {
+      "A-PRO": {
+        "ok": true,
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "estimated_total_cost": 12,
+        "projected_total_minutes": 115,
+        "available_minutes": 240,
+        "budget_gap": 0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "charged_cost": 0,
+        "duration_minutes": 5
+      }
+    },
+    "save_plan": {
+      "ok": true,
+      "saved": true,
+      "duplicate": false,
+      "plan": {
+        "plan_id": "f5c9ac3ce180",
+        "topic": "夏日新品",
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "script_template": "standard",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "total_cost": 12,
+        "total_minutes": 120,
+        "budget": 15,
+        "deadline": "2026-11-02T13:00:00+08:00",
+        "status": "saved_draft",
+        "published": false
+      },
+      "charged_cost": 9,
+      "duration_minutes": 45,
+      "asset_id": "A-PRO"
+    }
+  },
+  "cost_summary": {
+    "spent_cost": 12,
+    "total_cost": 12,
+    "minimum_estimated_total": 12,
+    "remaining_budget": 3
+  },
+  "elapsed_minutes": 120,
+  "available_minutes": 240,
+  "failed_step_minutes": 5,
+  "attempt": 1,
+  "mode": "deepseek_chat",
+  "published": false,
+  "trace": [
+    {
+      "step": 1,
+      "attempt": 1,
+      "actor": "deepseek_chat",
+      "action": "search_assets",
+      "arguments": {
+        "query": "夏日新品"
+      },
+      "observation": {
+        "ok": true,
+        "query": "夏日新品",
+        "assets": [
+          {
+            "asset_id": "A-PRO",
+            "title": "夏日新品主视觉短片",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 9,
+            "production_minutes": 40,
+            "quality": "premium"
+          },
+          {
+            "asset_id": "A-LEAN",
+            "title": "夏日新品轻量海报",
+            "tags": [
+              "夏日新品",
+              "夏日活动"
+            ],
+            "license_cost": 5,
+            "production_minutes": 25,
+            "quality": "lean"
+          }
+        ],
+        "partial": false,
+        "warnings": [],
+        "error": null,
+        "charged_cost": 1,
+        "duration_minutes": 15
+      },
+      "decision_basis": "Exact-topic asset search is required first; no prior search state exists.",
+      "model_turn": 1,
+      "next_action": "generate_script"
+    },
+    {
+      "step": 2,
+      "attempt": 1,
+      "actor": "deepseek_chat",
+      "action": "generate_script",
+      "arguments": {
+        "template": "standard"
+      },
+      "observation": {
+        "ok": true,
+        "template": "standard",
+        "script_id": "S-e80bef45",
+        "script": "夏日新品：展示主视觉、卖点与行动号召。",
+        "charged_cost": 2,
+        "duration_minutes": 50
+      },
+      "decision_basis": "Search returned two assets for 夏日新品; standard template attempted first per preference.",
+      "model_turn": 2,
+      "next_action": "estimate_plan"
+    },
+    {
+      "step": 3,
+      "attempt": 1,
+      "actor": "deepseek_chat",
+      "action": "estimate_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "observation": {
+        "ok": true,
+        "asset_id": "A-PRO",
+        "script_id": "S-e80bef45",
+        "estimated_total_cost": 12,
+        "projected_total_minutes": 115,
+        "available_minutes": 240,
+        "budget_gap": 0,
+        "deadline_gap_minutes": 0,
+        "feasible": true,
+        "charged_cost": 0,
+        "duration_minutes": 5
+      },
+      "decision_basis": "Premium asset license 9 plus sunk cost 3 totals 12 within budget 15; time 40+65=105 min within 240 min window.",
+      "model_turn": 3,
+      "next_action": "save_plan"
+    },
+    {
+      "step": 4,
+      "attempt": 1,
+      "actor": "deepseek_chat",
+      "action": "save_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "observation": {
+        "ok": false,
+        "saved": false,
+        "error": "plan_store_timeout",
+        "charged_cost": 0,
+        "duration_minutes": 5,
+        "asset_id": "A-PRO"
+      },
+      "decision_basis": "Estimate confirmed feasible: total cost 12 within budget 15, projected 120 min within 240 min available window.",
+      "model_turn": 4,
+      "next_action": "save_plan"
+    },
+    {
+      "step": 5,
+      "attempt": 1,
+      "actor": "deepseek_chat",
+      "action": "save_plan",
+      "arguments": {
+        "asset_id": "A-PRO"
+      },
+      "observation": {
+        "ok": true,
+        "saved": true,
+        "duplicate": false,
+        "plan": {
+          "plan_id": "f5c9ac3ce180",
+          "topic": "夏日新品",
+          "asset_id": "A-PRO",
+          "script_id": "S-e80bef45",
+          "script_template": "standard",
+          "script": "夏日新品：展示主视觉、卖点与行动号召。",
+          "total_cost": 12,
+          "total_minutes": 120,
+          "budget": 15,
+          "deadline": "2026-11-02T13:00:00+08:00",
+          "status": "saved_draft",
+          "published": false
+        },
+        "charged_cost": 9,
+        "duration_minutes": 45,
+        "asset_id": "A-PRO"
+      },
+      "decision_basis": "First save failed with plan_store_timeout and nothing was saved; retrying the same feasible estimated asset once.",
+      "model_turn": 5,
+      "next_action": "finish"
+    },
+    {
+      "step": 6,
+      "attempt": 1,
+      "actor": "deepseek_chat",
+      "action": "finish",
+      "arguments": {},
+      "observation": "stopped",
+      "decision_basis": "Search for 夏日新品 succeeded, standard script generated, premium asset A-PRO estimated feasible (cost 12 ≤ 15, 120 min ≤ 240 min), and draft plan f5c9ac3ce180 was saved after one retry following a store ",
+      "model_turn": 6,
+      "next_action": null
+    }
+  ]
+}

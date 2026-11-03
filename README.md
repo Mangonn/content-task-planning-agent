@@ -53,3 +53,7 @@ DeepSeek 通过 Chat Completions 的 function calling 选择**一个**动作；�
 | 需求、设计、评估、AI 使用、复盘 | [`docs/`](docs/) |
 
 示例中的预算单位、耗时、素材、故障均为合成数据。示例输入使用固定 `start_at` 与 `deadline` 以便复核计算；系统将它们视为规划窗口，不读取真实日历。此项目不对接真实素材、费用、审批或发布系统。
+
+## 2026-11-03 评审后改进
+
+修正 SQLite 测试连接关闭；输出显式列出失败步骤耗时 `failed_step_minutes`；新增真实模型保存失败后重试 Trace。见 [评估](docs/03-evaluation.md)。

@@ -20,6 +20,7 @@
   "steps": [],
   "tool_results": {},
   "trace": [],
+  "failed_step_minutes": 0,
   "published": false,
   "mode": "preflight"
 }

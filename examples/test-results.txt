@@ -17,6 +17,6 @@ test_script_failure_uses_compact_and_keeps_search (test_agent.PlanningAcceptance
 test_step_and_tool_limits_are_explicit (test_agent.PlanningAcceptanceTests.test_step_and_tool_limits_are_explicit) ... ok
 
 ----------------------------------------------------------------------
-Ran 17 tests in 0.153s
+Ran 17 tests in 0.170s
 
 OK

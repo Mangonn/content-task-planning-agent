@@ -10,7 +10,7 @@ python3 examples/run_examples.py
 python3 examples/run_model_examples.py  # 需 DEEPSEEK_API_KEY 与网络
 ```
 
-结果：17 项测试通过，13 组离线 CLI 输入、实际输出和 Trace 已生成；两组真实 DeepSeek 模型案例完成并保存草稿。测试日志见 [`examples/test-results.txt`](../examples/test-results.txt)。离线结果是流程与业务约束验证；真实模型记录才用于验证模型观察后改选动作，且只代表这两次运行。
+结果：17 项测试通过，13 组离线 CLI 输入、实际输出和 Trace 已生成；三组真实 DeepSeek 模型案例完成并保存草稿。测试日志见 [`examples/test-results.txt`](../examples/test-results.txt)。离线结果是流程与业务约束验证；真实模型记录才用于验证模型观察后改选动作，且只代表这三次运行。
 
 ## 验收点对应证据
 
@@ -27,7 +27,7 @@ python3 examples/run_model_examples.py  # 需 DEEPSEEK_API_KEY 与网络
 | 保存失败及续跑 | [`save_failure`](../examples/outputs/save_failure.json)、[`save_recovered`](../examples/outputs/save_recovered.json) | 第一次 `failed/incomplete`，无草稿；第二次复用已成功步骤后保存 |
 | 失败步骤续跑 | [`resume_first`](../examples/outputs/resume_first.json)、[`resume_complete`](../examples/outputs/resume_complete.json) | 第一次到步数上限；续跑不重复检索，失败脚本仍记失败 |
 
-上述两份真实模型 Trace 均逐步记录动作、参数、工具返回摘要、下一动作及简短依据。若模型返回并行调用，执行器先拒绝，Trace 留下 `parallel_calls_rejected`，之后再由模型单步选择。此控制事件不产生费用。
+上述三份真实模型 Trace 均逐步记录动作、参数、工具返回摘要、下一动作及简短依据。若模型返回并行调用，执行器先拒绝，Trace 留下 `parallel_calls_rejected`，之后再由模型单步选择。此控制事件不产生费用。
 
 ## 失败与边界核查
 
@@ -40,4 +40,11 @@ python3 examples/run_model_examples.py  # 需 DEEPSEEK_API_KEY 与网络
 
 ## 局限
 
-模型两次成功轨迹只是小样本，不代表稳定成功率；模型可能选择无效调用、耗尽上限或遇到网络错误。示例资料与故障都是合成的，费用单位不对应真实货币；固定规划窗口不使用实时日历。SQLite 适合单机演示，未验证高并发、跨机器恢复或真实审批系统。真实脚本质量没有人工内容评审。
+模型三次成功轨迹只是小样本，不代表稳定成功率；模型可能选择无效调用、耗尽上限或遇到网络错误。示例资料与故障都是合成的，费用单位不对应真实货币；固定规划窗口不使用实时日历。SQLite 适合单机演示，未验证高并发、跨机器恢复或真实审批系统。真实脚本质量没有人工内容评审。
+
+
+## 2026-11-03 评审反馈后的复核
+
+测试中的 SQLite 查询连接已显式关闭。17 项测试和 13 组离线示例重新通过；本机为 macOS，Windows 评审环境尚未复跑。输出新增 `failed_step_minutes`：脚本服务超时的 10 分钟仍计入 `elapsed_minutes`，但不计费，避免评审自己从步骤中反推沉没时间。
+
+新增真实模型[保存失败后恢复输出](../examples/model_outputs/deepseek_save_failure.json)与[Trace](../examples/model_traces/deepseek_save_failure.json)：第一次 `save_plan` 返回 `plan_store_timeout`，模型观察后再次保存成功；原失败步骤仍保留。真实模型记录现为三条。

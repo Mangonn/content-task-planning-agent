@@ -1,5 +1,6 @@
 """Collect two genuine model feedback paths without overwriting good traces on failure."""
 
+import argparse
 import json
 import subprocess
 import sys
@@ -10,6 +11,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUTS = ROOT / "examples/model_outputs"
 TRACES = ROOT / "examples/model_traces"
+parser = argparse.ArgumentParser()
+parser.add_argument("--cases", nargs="+", choices=("budget_replan", "tool_failure", "save_failure"),
+                    default=("budget_replan", "tool_failure", "save_failure"))
+selected = parser.parse_args().cases
 
 
 def verify(case: str, result: dict) -> None:
@@ -34,19 +39,35 @@ def verify(case: str, result: dict) -> None:
                         x["observation"].get("ok") for x in scripts)
                 and result["plan"]["script_template"] == "compact"):
             raise RuntimeError("tool_failure: model did not demonstrate failure adaptation")
+    if case == "save_failure":
+        saves = [x for x in trace if x["action"] == "save_plan"]
+        if not (any(x["observation"].get("error") == "plan_store_timeout" for x in saves)
+                and any(x["observation"].get("saved") for x in saves)):
+            raise RuntimeError("save_failure: no observed recovery after failed save")
 
 
 results = {}
 with tempfile.TemporaryDirectory() as directory:
-    for case in ("budget_replan", "tool_failure"):
-        command = [sys.executable, "-m", "src.cli", f"examples/inputs/{case}.json",
+    for case in selected:
+        input_name = "normal" if case == "save_failure" else case
+        command = [sys.executable, "-m", "src.cli", f"examples/inputs/{input_name}.json",
                    "--mode", "deepseek", "--db", str(Path(directory) / f"{case}.sqlite3")]
         if case == "tool_failure":
             command += ["--fail-once", "script_standard"]
+        if case == "save_failure":
+            command += ["--fail-once", "save_plan"]
         completed = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=False)
         if not completed.stdout:
             raise RuntimeError(f"{case}: {completed.stderr}")
         result = json.loads(completed.stdout)
+        if case == "save_failure":
+            print("save_failure first run:", result["completion_status"], result["save_status"],
+                  [item["action"] for item in result["trace"]], flush=True)
+            if result["completion_status"] == "incomplete" and result["save_status"] == "failed":
+                completed = subprocess.run(command[:-2], cwd=ROOT, capture_output=True, text=True, check=False)
+                if not completed.stdout:
+                    raise RuntimeError(f"{case} resume: {completed.stderr}")
+                result = json.loads(completed.stdout)
         print(f"{case}: {result['completion_status']} ({len(result['trace'])} trace steps)")
         verify(case, result)
         results[case] = result

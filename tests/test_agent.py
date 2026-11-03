@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from contextlib import closing
 from unittest.mock import patch
 
 from src.agent import run
@@ -32,7 +33,7 @@ class PlanningAcceptanceTests(unittest.TestCase):
         return run(self.request(name), model=MockPolicy(), db_path=self.db, **kwargs)
 
     def plan_count(self):
-        with sqlite3.connect(self.db) as connection:
+        with closing(sqlite3.connect(self.db)) as connection:
             return connection.execute("SELECT COUNT(*) FROM plans").fetchone()[0]
 
     def test_normal_plan_is_saved_with_exact_cost_and_time(self):
@@ -74,6 +75,7 @@ class PlanningAcceptanceTests(unittest.TestCase):
         self.assertEqual(result["steps"][1]["action"], "generate_script")
         self.assertEqual(result["steps"][1]["status"], "failed")
         self.assertEqual(result["steps"][1]["tool_result"]["error"], "script_service_timeout")
+        self.assertEqual(result["failed_step_minutes"], 10)
         self.assertEqual(result["steps"][2]["arguments"]["template"], "compact")
 
     def test_partial_search_keeps_lean_result(self):

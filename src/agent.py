@@ -65,6 +65,8 @@ def _result(request: dict, state: dict, mode: str, *, forced_reason: str | None 
     start = _timestamp(state["start_at"], "start_at")
     available = int((deadline - start).total_seconds() // 60)
     estimates = [x for x in state["estimates"].values() if x.get("ok")]
+    failed_step_minutes = sum(step["tool_result"].get("duration_minutes", 0)
+                              for step in state["steps"] if step["status"] == "failed")
     trace = deepcopy(state["trace"])
     for index, entry in enumerate(trace):
         entry["next_action"] = trace[index + 1]["action"] if index + 1 < len(trace) else None
@@ -81,6 +83,7 @@ def _result(request: dict, state: dict, mode: str, *, forced_reason: str | None 
                          "minimum_estimated_total": min((x["estimated_total_cost"] for x in estimates), default=None),
                          "remaining_budget": request["budget"] - (plan["total_cost"] if plan else state["spent_cost"])},
         "elapsed_minutes": state["elapsed_minutes"], "available_minutes": available,
+        "failed_step_minutes": failed_step_minutes,
         "attempt": state["attempt"], "mode": mode, "published": False, "trace": trace,
     }
 

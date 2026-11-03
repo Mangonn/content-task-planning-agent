@@ -40,7 +40,8 @@ def preflight(request: dict) -> dict | None:
                 "plan": None, "gaps": {}, "cost_summary": {"spent_cost": 0,
                 "total_cost": 0, "minimum_estimated_total": None,
                 "remaining_budget": request.get("budget")}, "task_plan": [],
-                "steps": [], "tool_results": {}, "trace": [], "published": False}
+                "steps": [], "tool_results": {}, "trace": [], "failed_step_minutes": 0,
+                "published": False}
     if not isinstance(request["topic"], str) or not request["topic"].strip():
         raise ValueError("topic must be a nonempty string")
     if isinstance(request["budget"], bool) or not isinstance(request["budget"], int) or request["budget"] < 0:
@@ -56,7 +57,8 @@ def preflight(request: dict) -> dict | None:
                     "cost_summary": {"spent_cost": 0, "total_cost": 0,
                     "minimum_estimated_total": None,
                     "remaining_budget": request["budget"]}, "task_plan": [],
-                    "steps": [], "tool_results": {}, "trace": [], "published": False}
+                    "steps": [], "tool_results": {}, "trace": [], "failed_step_minutes": 0,
+                    "published": False}
     return None
 
 
